@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <title>My Top10</title>
-</head>
-<body>
-  <div class="container">
-    <h1>My Top10</h1>
+@extends('layouts.default')
+
+@section('title', 'My Top10')
+
+@section('content')
+
+    <h1>
+    <a href="{{ url('/posts/create') }}" >新規投稿</a>
+    My Top10
+    </h1>
     <ul>
-      <li><a href="">title</a></li>
-      <li><a href=""></a></li>
-      <li><a href=""></a></li>
+      @forelse ($posts as $post)
+      <li><a href="{{ action('PostsController@show', $post) }}">{{ $post->title }}</a></li>
+      @empty
+      <li>投稿がありません</li>
+      @endforelse
     </ul>
-  </div>
-</body>
-</html>
+@endsection
