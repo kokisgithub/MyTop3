@@ -8,22 +8,26 @@
     編集
     </h1>
     <form method="post" action="{{ url('/posts', $post->id) }}">
-    {{ csrf_field() }}
-    {{ method_field('patch') }}
-    <p>
-        <input type="text" name="title" placeholder="タイトルを入力" value="{{ old('title', $post->title) }}">
-        @if ($errors->has('title'))
-        <span class="text-danger">{{ $errors->first('title') }}</span>
-        @endif
-    </p>
-    <p>
-        <textarea name="body" placeholder="本文を入力">{{ old('body', $post->body) }}</textarea>
-        @if ($errors->has('body'))
-        <span class="text-danger">{{ $errors->first('body') }}</span>
-        @endif
-    </p>
-    <p>
-        <input type="submit" value="更新">
-    </p>
+        <div class="form-group">
+            {{ csrf_field() }}
+            {{ method_field('patch') }}
+            <p>
+                <input type="text" name="title" placeholder="タイトルを入力" value="{{ old('title', $post->title) }}" class="form-control">
+                @if ($errors->has('title'))
+                <span class="text-danger">{{ $errors->first('title') }}</span>
+                @endif
+            </p>
+        </div>
+        <div class="form-group">
+            <p>
+                <textarea name="body" placeholder="本文を入力" class="form-control">{{ old('body', $post->body) }}</textarea>
+                @if ($errors->has('body'))
+                <span class="text-danger">{{ $errors->first('body') }}</span>
+                @endif
+            </p>
+        </div>
+            <p>
+                <input type="submit" value="更新" class="btn btn-outline-primary">
+            </p>
     </form>
 @endsection
