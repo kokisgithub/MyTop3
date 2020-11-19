@@ -1,14 +1,14 @@
 @extends('layouts.default')
 
-@section('title', 'My Top10')
+@section('title', 'MyTop10')
 
 @section('content')
 
     <h1>
-    <a href="{{ url('/posts/create') }}" class="float-right btn btn-outline-primary">新規投稿</a>
-    My Top10
+    <a href="{{ url('/posts/create') }}" class="float-right btn btn-outline-primary">新規作成</a>
+    MyTop10
     </h1>
-      <table class="table table-striped table-hover">
+      <table class="table table-striped table-hover mt-3">
         @forelse ($posts as $post)
           <tr>
             <td>
