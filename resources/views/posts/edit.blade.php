@@ -22,6 +22,6 @@
                 <span class="text-danger">{{ $errors->first('body') }}</span>
                 @endif
         </div>
-                <input type="submit" value="更新" class="btn btn-outline-primary">
+                <input type="submit" value="更新" class="btn btn-outline-success">
     </form>
 @endsection

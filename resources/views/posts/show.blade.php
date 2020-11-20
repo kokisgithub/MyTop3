@@ -8,4 +8,5 @@
     {{ $post->title }}
     </h1>
     <p class="mt-4">{!! nl2br(e($post->body)) !!} </p>
+            @include('layouts.modal')
 @endsection
