@@ -15,10 +15,13 @@
                 <a href="{{ action('PostsController@show', $post) }}">{{ $post->title }}</a>
             </td>
             <td>
+            <td>
+            @include('layouts.modal_delete_post')
+            <td>
                 <a href="{{ action('PostsController@edit', $post) }}" class="btn btn-outline-secondary">編集</a>
             </td>
             @empty
-            <p class="mt-4">投稿がありません</p>
+            <td class="mt-4">投稿がありません</td>
           </tr>
         @endforelse
       </table>
