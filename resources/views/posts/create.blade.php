@@ -16,19 +16,10 @@
                 @endif
         </div>
         <div class="form-group">
-                <textarea name="body" placeholder="本文を入力" class="form-control" rows="10">{{ old('body') }}
+                <textarea name="body" placeholder="本文を入力" class="form-control" rows="3">{{ old('body') }}
 ①
 ②
-③
-④
-⑤
-⑥
-⑦
-⑧
-⑨
-⑩
-
-                </textarea>
+③</textarea>
                 @if ($errors->has('body'))
                 <span class="text-danger">{{ $errors->first('body') }}</span>
                 @endif

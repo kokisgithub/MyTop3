@@ -1,12 +1,12 @@
 @extends('layouts.default')
 
-@section('title', 'MyTop10')
+@section('title', 'MyTop3')
 
 @section('content')
 
     <h1>
     <a href="{{ url('/posts/create') }}" class="float-right btn btn-outline-primary">新規作成</a>
-    MyTop10
+    MyTop3
     </h1>
       <table class="table table-striped table-hover mt-3">
         @forelse ($posts as $post)
