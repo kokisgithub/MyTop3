@@ -12,7 +12,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <h4>この記事を削除します。よろしいですか？</h4>
+          <h5>この記事を削除します。よろしいですか？</h5>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>

@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>
-    <a href="{{ url('/') }}" class="float-right btn btn-outline-primary">戻る</a>
+    <a href="{{ url('/') }}" class="float-right btn btn-outline-secondary">戻る</a>
     新規作成
     </h1>
     <form method="post" action="{{ url('/posts') }}">

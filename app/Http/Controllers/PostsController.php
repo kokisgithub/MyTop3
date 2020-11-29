@@ -9,13 +9,19 @@ use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {
-    public function index(){
-        $posts = Post::latest()->get();
+
+    public function index(Request $request){
+        if ($request->filled('keyword')) {
+            $keyword = $request->input('keyword');
+            $posts = Post::where('title', 'like', '%'. $keyword . '%')->get();    
+        } else {
+            $posts = Post::latest()->get();
+        }
         return view('posts.index')->with('posts', $posts);
     }
 
     public function show(Post $post){
-        $post->comments = Comment::where('post_id', '=', $post->id)->orderBy('created_at', 'desc')->get();
+        $post->comments = Comment::where('post_id', $post->id)->orderBy('created_at', 'desc')->get();
         return view('posts.show')->with('post', $post);
     }
 
@@ -46,4 +52,5 @@ class PostsController extends Controller
         $post->delete();
         return redirect('/');
     }
+
 }
