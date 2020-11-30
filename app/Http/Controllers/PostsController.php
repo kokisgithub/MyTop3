@@ -11,13 +11,13 @@ class PostsController extends Controller
 {
 
     public function index(Request $request){
+        $keyword = $request->input('keyword');
         if ($request->filled('keyword')) {
-            $keyword = $request->input('keyword');
-            $posts = Post::where('title', 'like', '%'. $keyword . '%')->get();    
+            $posts = Post::where('title', 'like', '%'. $keyword . '%')->paginate(5);    
         } else {
-            $posts = Post::latest()->get();
+            $posts = Post::latest()->paginate(5);
         }
-        return view('posts.index')->with('posts', $posts);
+        return view('posts.index')->with('posts', $posts)->with('keyword', $keyword);
     }
 
     public function show(Post $post){

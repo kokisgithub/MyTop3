@@ -26,5 +26,7 @@
           </tr>
         @endforelse
       </table>
-
+  <div class="text-center">
+    {!! $posts->appends(['keyword'=>$keyword])->render() !!}
+  </div>
 @endsection
