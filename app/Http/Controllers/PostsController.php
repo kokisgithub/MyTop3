@@ -13,7 +13,7 @@ class PostsController extends Controller
     public function index(Request $request){
         $keyword = $request->input('keyword');
         if ($request->filled('keyword')) {
-            $posts = Post::where('title', 'like', '%'. $keyword . '%')->paginate(5);    
+            $posts = Post::latest()->where('title', 'like', '%'. $keyword . '%')->paginate(5);    
         } else {
             $posts = Post::latest()->paginate(5);
         }

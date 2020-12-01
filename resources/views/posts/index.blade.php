@@ -27,6 +27,6 @@
         @endforelse
       </table>
   <div class="text-center">
-    {!! $posts->appends(['keyword'=>$keyword])->render() !!}
+    {!! $posts->appends(['keyword'=>$keyword])->render('vendor.pagination.bootstrap-4') !!}
   </div>
 @endsection
