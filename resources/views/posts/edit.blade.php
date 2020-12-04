@@ -4,20 +4,20 @@
 
 @section('content')
     <h1>
-    <a href="{{ url('/') }}" class="float-right btn btn-outline-secondary">戻る</a>
-    編集
+        @include('layouts.return')    
+        編集
     </h1>
     <form method="post" action="{{ url('/posts', $post->id) }}">
         <div class="form-group">
             {{ csrf_field() }}
             {{ method_field('patch') }}
-                <input type="text" name="title" placeholder="タイトルを入力" value="{{ old('title', $post->title) }}" class="form-control">
+                <input type="text" name="title" placeholder="タイトルを入力" value="{{ old('title', $post->title) }}" class="form-control border-info mt-4">
                 @if ($errors->has('title'))
                 <span class="text-danger">{{ $errors->first('title') }}</span>
                 @endif
         </div>
         <div class="form-group">
-                <textarea name="body" placeholder="本文を入力" class="form-control" rows="10">{{ old('body', $post->body) }}</textarea>
+                <textarea name="body" placeholder="本文を入力" class="form-control border-info" rows="3">{{ old('body', $post->body) }}</textarea>
                 @if ($errors->has('body'))
                 <span class="text-danger">{{ $errors->first('body') }}</span>
                 @endif

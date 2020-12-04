@@ -5,18 +5,18 @@
 @section('content')
     
     <h1>
-    <a href="{{ url('/') }}" class="float-right ml-5 btn btn-outline-secondary">戻る</a>
+        @include('layouts.return')    
         {{ $post->title }}
     </h1>
-    <p class="mt-4 mb-5">
-    {!! nl2br(e($post->body)) !!} 
-    </p>
+    <h3 class="mt-4 mb-4">
+     {!! nl2br(e($post->body)) !!} 
+    </h3>
     
-    <h3 class="mt-5">コメント</h3>
+    <h4 class="mt-5">コメント</h4>
         <form method="post" action="{{ action('CommentsController@store', $post) }}" >
-            <div class="form-group mt-5">
+            <div class="form-group mt-3">
                 {{ csrf_field() }}
-                    <input type="text" name="body" placeholder="タイトルを入力" value="{{ old('body') }}" class="form-control">
+                    <input type="text" name="body" placeholder="タイトルを入力" value="{{ old('body') }}" class="form-control border-info">
             </div>
                     @if ($errors->has('body'))
                     <span class="text-danger">{{ $errors->first('body') }}</span>
