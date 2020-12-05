@@ -14,17 +14,14 @@
     
     <h4 class="mt-5">コメント</h4>
         <form method="post" action="{{ action('CommentsController@store', $post) }}" >
+            @csrf
             <div class="form-group mt-3">
-                {{ csrf_field() }}
-                    <input type="text" name="body" placeholder="タイトルを入力" value="{{ old('body') }}" class="form-control border-info">
+                    <input type="text" name="body" placeholder="コメントを入力" value="{{ old('body') }}" class="form-control border-info">
+                    @error('body')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
             </div>
-                    @if ($errors->has('body'))
-                    <span class="text-danger">{{ $errors->first('body') }}</span>
-                    @endif
-                    @if ($errors->has('body'))
-                    <span class="text-danger">{{ $errors->first('body') }}</span>
-                    @endif
-                    <input type="submit" value="コメントする" class="btn btn-primary">
+            <input type="submit" value="コメントする" class="btn btn-primary">
         </form>
         <table class="table table-striped table-hover mt-2">
             @forelse ($post->comments as $comment)
