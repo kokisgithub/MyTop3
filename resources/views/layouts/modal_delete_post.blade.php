@@ -17,7 +17,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
           <form method="post" action="{{ url('/posts', $post->id) }}">
-              {{ csrf_field() }}
+              @csrf
               {{ method_field('delete') }}
               <button type="submit" class="btn btn-outline-danger">削除</button>
           </form>
