@@ -29,10 +29,12 @@
                     <td>
                         {{ $comment->body }}
                     </td>
-                    <td>
-                    @include('layouts.modal_delete_comment')
-                    </td>
-                    @empty
+                    @auth
+                        <td>
+                            @include('layouts.modal_delete_comment')
+                        </td>
+                    @endauth
+            @empty
                     <td class="mt-4">コメントがありません</td>
                 </tr>
             @endforelse

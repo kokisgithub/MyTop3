@@ -4,24 +4,28 @@
 
 @section('content')
 
-    <h1>
-    <a href="{{ url('/posts/create') }}" class="float-right btn btn-primary">新規作成</a>
-    MyTop3
+    <h1 class="mb-5">
+     MyTop3
+        <a href="{{ url('/posts/create') }}" class="btn btn-primary float-right">投稿する</a>
     </h1>
-    @include('posts.search')
-      <table class="table table-striped table-hover mt-3">
+      @include('posts.search')
+      <table class="table table-bodered table-hover mt-3">
         @forelse ($posts as $post)
           <tr>
             <td>
                 <a href="{{ action('PostsController@show', $post) }}" class="font-weight-bold">{{ $post->title }}</a>
             </td>
-            <td>
-            <td>
-            @include('layouts.modal_delete_post')
-            <td>
+            @auth
+              <td>
+                @include('layouts.modal_delete_post')
+              </td>
+            @endauth
+            @auth
+              <td>
                 <a href="{{ action('PostsController@edit', $post) }}" class="btn btn-success">編集</a>
-            </td>
-            @empty
+              </td>
+            @endauth
+        @empty
             <td class="mt-4">投稿がありません</td>
           </tr>
         @endforelse
