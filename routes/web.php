@@ -20,7 +20,4 @@ Route::patch('/posts/{post}', 'PostsController@update')->middleware('auth');
 Route::delete('/posts/{post}', 'PostsController@destroy')->middleware('auth');
 Route::post('/posts/{post}/comments', 'CommentsController@store')->middleware('auth');
 Route::delete('/posts/{post}/comments/{comment}', 'CommentsController@destroy')->middleware('auth');
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
