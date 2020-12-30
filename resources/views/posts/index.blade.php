@@ -15,15 +15,18 @@
             <td>
                 <a href="{{ action('PostsController@show', $post) }}" class="font-weight-bold">{{ $post->title }}</a>
             </td>
+            <td>
+            {{ optional($post->user)->name }}
+            </td>
             @auth
-              <td>
-                @include('layouts.modal_delete_post')
-              </td>
-            @endauth
-            @auth
-              <td>
-                <a href="{{ action('PostsController@edit', $post) }}" class="btn btn-success">編集</a>
-              </td>
+              @if ($post->user_id === $login_user_id)
+                <td>
+                  @include('layouts.modal_delete_post')
+                </td>
+                <td>
+                  <a href="{{ action('PostsController@edit', $post) }}" class="btn btn-success">編集</a>
+                </td>
+              @endif
             @endauth
         @empty
             <td class="mt-4">投稿がありません</td>
