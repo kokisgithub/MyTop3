@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Comment;
-use App\User;
 use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {
 
-    public function index(Request $request, Post $post){
+    public function index(Request $request){
         $user = Auth::user();
         if ($user) {
             $login_user_id = $user->id;
@@ -29,8 +28,14 @@ class PostsController extends Controller
     }
 
     public function show(Post $post){
+        $user = Auth::user();
+        if ($user) {
+            $login_user_id = $user->id;
+        } else {
+            $login_user_id = '';
+        }
         $post->comments = Comment::where('post_id', $post->id)->orderBy('created_at', 'desc')->get();
-        return view('posts.show')->with('post', $post);
+        return view('posts.show')->with('post', $post)->with('login_user_id', $login_user_id);
     }
 
     public function create(){

@@ -3,7 +3,7 @@
 @section('title', '新規作成')
 
 @section('content')
-    <h1>
+    <h1 class="mb-5">
         @include('layouts.return')    
         新規作成
     </h1>
@@ -25,6 +25,6 @@
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
-        <input type="submit" value="投稿" class="btn btn-outline-primary">
+        <input type="submit" value="投稿" class="btn btn-primary">
     </form>
 @endsection

@@ -3,7 +3,7 @@
 @section('title', '編集')
 
 @section('content')
-    <h1>
+    <h1 class="mb-5">
         @include('layouts.return')    
         編集
     </h1>
@@ -22,6 +22,6 @@
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
         </div>
-                <input type="submit" value="更新" class="btn btn-outline-success">
+                <input type="submit" value="更新" class="btn btn-success">
     </form>
 @endsection
