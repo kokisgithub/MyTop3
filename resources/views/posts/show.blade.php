@@ -23,26 +23,33 @@
             </div>
             <input type="submit" value="コメントする" class="btn btn-primary">
         </form>
-        <table class="table table-striped table-hover mt-5">
+        <table class="table table-borderless table-hover mt-5">
+            <tr>
+                <th>
+                 コメント
+                </th>
+                <th class="text-center pl-5">
+                    ユーザー
+                </th>
+            </tr>
             @forelse ($post->comments as $comment)
                 <tr>
                     <td>
                         {{ $comment->body }}
                     </td>
-                    <td class="text-center text-secondary font-weight-bold">
+                    <td class="text-secondary text-center font-weight-bold pl-5">
                         {{ optional($comment->user)->name }}
                     </td>
                     @auth
                         @if ($comment->user_id === $login_user_id)
-                            <td>
+                            <td class="text-center pr-5">
                                 @include('layouts.modal_delete_comment')
                             </td>
                         @endif
                     @endauth
             @empty
                     <td class="mt-4">コメントがありません</td>
-                </tr>
             @endforelse
+                </tr>
         </table>
-
 @endsection

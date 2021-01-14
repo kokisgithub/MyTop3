@@ -1,5 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand text-warning" href="{{ url('/') }}">MyTop3</a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top shadow-sm">
+  <a class="navbar-brand text-warning text-center ml-5 pl-5" href="{{ url('/') }}">
+    {{ config('app.name', 'Laravel') }}
+  </a>
   <!-- Navbar content -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"      aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
     <span class="navbar-toggler-icon"></span>
@@ -12,7 +14,7 @@
     </ul>
 
     <!-- Right Side Of Navbar -->
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto mr-5 pr-5">
       <!-- Authentication Links -->
         @guest
           <li class="nav-item">
