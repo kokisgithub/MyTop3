@@ -9,21 +9,29 @@
         <a href="{{ url('/posts/create') }}" class="btn btn-outline-primary float-right">投稿する</a>
     </h1>
       @include('posts.search')
-      <table class="table table-bodered table-hover mt-3">
+      <table class="table table-borderless table-hover mt-5">
+          <tr>
+            <th>
+              タイトル
+            </th>
+            <th class="text-center pl-5">
+              ユーザー
+            </th>
+          </tr>
         @forelse ($posts as $post)
           <tr>
             <td>
                 <a href="{{ action('PostsController@show', $post) }}" class="font-weight-bold">{{ $post->title }}</a>
             </td>
-            <td class="text-center text-secondary font-weight-bold">
+            <td class="text-center text-secondary font-weight-bold pl-5">
             {{ optional($post->user)->name }}
             </td>
             @auth
               @if ($post->user_id === $login_user_id)
-                <td>
+                <td class="text-center">
                   @include('layouts.modal_delete_post')
                 </td>
-                <td>
+                <td class="text-center pr-5">
                   <a href="{{ action('PostsController@edit', $post) }}" class="btn btn-outline-success">編集</a>
                 </td>
               @endif
