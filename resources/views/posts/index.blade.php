@@ -9,7 +9,7 @@
         <a href="{{ url('/posts/create') }}" class="btn btn-outline-primary float-right">投稿する</a>
     </h1>
       @include('posts.search')
-      <table class="table table-borderless table-hover mt-5">
+      <table class="table table-striped table-hover mt-5">
           <tr>
             <th>
               タイトル
@@ -17,6 +17,12 @@
             <th class="text-center pl-5">
               ユーザー
             </th>
+              @auth
+                  <th>    
+                  </th>    
+                  <th>    
+                  </th>    
+              @endauth
           </tr>
         @forelse ($posts as $post)
           <tr>
@@ -33,6 +39,11 @@
                 </td>
                 <td class="text-center pr-5">
                   <a href="{{ action('PostsController@edit', $post) }}" class="btn btn-outline-success">編集</a>
+                </td>
+              @else
+                <td>
+                </td>
+                <td>
                 </td>
               @endif
             @endauth

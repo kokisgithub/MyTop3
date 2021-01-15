@@ -23,14 +23,18 @@
             </div>
             <input type="submit" value="コメントする" class="btn btn-primary">
         </form>
-        <table class="table table-borderless table-hover mt-5">
+        <table class="table table-striped table-hover mt-5">
             <tr>
                 <th>
-                 コメント
+                    コメント
                 </th>
                 <th class="text-center pl-5">
                     ユーザー
                 </th>
+                @auth
+                    <th>
+                    </th>
+                @endauth
             </tr>
             @forelse ($post->comments as $comment)
                 <tr>
@@ -45,11 +49,14 @@
                             <td class="text-center pr-5">
                                 @include('layouts.modal_delete_comment')
                             </td>
+                        @else
+                            <td>
+                            </td>
                         @endif
                     @endauth
             @empty
                     <td class="mt-4">コメントがありません</td>
-            @endforelse
                 </tr>
+            @endforelse
         </table>
 @endsection
