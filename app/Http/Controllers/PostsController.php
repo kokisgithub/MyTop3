@@ -19,11 +19,11 @@ class PostsController extends Controller
             $login_user_id = '';
         }
         $keyword = $request->input('keyword');
+        $query_p = Post::query();
         if ($request->filled('keyword')) {
-            $posts = Post::latest()->where('title', 'like', '%'. $keyword . '%')->paginate(5);    
-        } else {
-            $posts = Post::latest()->paginate(5);
+            $query_p->where('title', 'like', '%'. $keyword . '%');    
         }
+        $posts = $query_p->latest()->paginate(5);
         return view('posts.index')->with('posts', $posts)->with('keyword', $keyword)->with('login_user_id', $login_user_id);
     }
 
