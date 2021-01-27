@@ -1,4 +1,4 @@
-\Models<?php
+<?php
 
 namespace App\Http\Controllers;
 
