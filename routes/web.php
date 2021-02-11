@@ -20,4 +20,15 @@ Route::patch('/posts/{post}', 'PostsController@update')->middleware('auth');
 Route::delete('/posts/{post}', 'PostsController@destroy')->middleware('auth');
 Route::post('/posts/{post}/comments', 'CommentsController@store')->middleware('auth');
 Route::delete('/posts/{post}/comments/{comment}', 'CommentsController@destroy')->middleware('auth');
-Auth::routes();
+
+Auth::routes([
+  'reset'   =>  false
+]);
+
+Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
+  Auth::routes([
+    'reset'   =>  false,
+    'verify'  =>  false
+  ]);
+});
+Route::get('/admin/home', 'Admin\AdminHomeController@index')->name('admin_home');
