@@ -38,8 +38,25 @@ class PostsController extends Controller
         return view('posts.show')->with('post', $post)->with('login_user_id', $login_user_id);
     }
 
-    public function create(){
-        return view('posts.create');
+    public function create(Request $request){
+        $bullets = $request->input('bullets');
+        if ($bullets == 1) {
+        $bullets = '
+①
+②
+③';
+        } elseif ($bullets == 2) {
+            $bullets = '
+1)
+2)
+3)';
+        } elseif ($bullets == 3) {
+            $bullets = '
+・
+・
+・';
+        } 
+        return view('posts.create')->with('bullets', $bullets);
     }
 
     public function store(PostRequest $request){
