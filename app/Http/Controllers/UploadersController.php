@@ -11,34 +11,27 @@ class UploadersController extends Controller
 {
     public function getIndex(){
         $user = Auth::user();
-        return view('uploader.index')->with('user', $user);
+        $uploader = Uploader::where('user_id', $user->id)->latest()->first();
+        return view('uploader.index', [
+            'user'            =>  $user,
+            'uploader'        =>  $uploader,
+        ]);
     }
     
-    public function confirm(UploaderRequest $request){
+    public function upload(UploaderRequest $request){
         $user = Auth::user();
-        $image_name = uniqid("IMAGE_") . "." . $request->file('image')->guessExtension(); 
-        $request->file('image')->move(public_path() . "/img/tmp", $image_name);
-        $image = "/img/tmp/".$image_name;
-        
-        return view('uploader.confirm');
-    }
+        $imageName = $request->file('image')->getClientOriginalName(); 
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $newImageName = pathinfo($imageName, PATHINFO_FILENAME) . "_" . uniqid() . "." . $extension;
+        $path = $request->file('image')->storeAs('public', $newImageName);
+        $filename = basename($path);
 
-    public function finish(UploaderRequest $request){
-        $user = Auth::user();
-        $uploader = new Uploader;
+        $uploader = new Uploader();
         $uploader->user_id = $user->id;
-        $uploader->image = $request->image;
+        $uploader->image = $filename;
         $uploader->save();
-
-        $lastInsertedId = $uploader->id;
-
-        if (!file_exists(public_path() . "/img/" . $lastInsertedId)) {
-            mkdir(public_path() . "/img/" . $lastInsertedId, 0777);
-        }
-
-        rename(public_path() . $request->image, public_path() . "/img/" . $lastInsertedId . "/image." .pathinfo($request->image, PATHINFO_EXTENSION));
-
-        return view('uploader.finish');
+        
+        return redirect('/uploaders');
     }
 
 }

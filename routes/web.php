@@ -21,6 +21,7 @@ Route::delete('/posts/{post}', 'PostsController@destroy')->middleware('auth');
 Route::post('/posts/{post}/comments', 'CommentsController@store')->middleware('auth');
 Route::delete('/posts/{post}/comments/{comment}', 'CommentsController@destroy')->middleware('auth');
 Route::get('/uploaders', 'UploadersController@getIndex')->middleware('auth');
+Route::post('/uploaders', 'UploadersController@upload')->middleware('auth');
 
 Auth::routes([
   'reset'   =>  false,
