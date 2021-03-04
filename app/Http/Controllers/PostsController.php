@@ -47,10 +47,20 @@ class PostsController extends Controller
 ③';
         } elseif ($bullets == 2) {
             $bullets = '
-1)
-2)
-3)';
+1.
+2.
+3.';
         } elseif ($bullets == 3) {
+            $bullets = '
+Ⅰ.
+Ⅱ.
+Ⅲ.';
+        } elseif ($bullets == 4) {
+            $bullets = '
+壱 
+弐 
+参 ';
+        } elseif ($bullets == 5) {
             $bullets = '
 ・
 ・

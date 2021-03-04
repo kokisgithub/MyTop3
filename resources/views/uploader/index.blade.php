@@ -27,13 +27,14 @@
           </tr>
           <tr>
             @auth  
+            @isset ($uploader->image)
                 <td class="text-center">
                   <img src="{{ asset('/storage/' . $uploader->image) }}" width="200" height="200">
                 </td>
-            @endauth
-            @empty ($uploader->image)
+            @else
               <td class="mt-4 text-center">プロフィール画像がありません</td>
-            @endempty
+            @endisset
+            @endauth
           </tr>
       </table>
 @endsection

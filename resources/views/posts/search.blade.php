@@ -1,6 +1,6 @@
 <form method="get" action="{{ url('/') }}" class="form-inline ml-2">
       <div class="form-group">
-        <input type="text" name="keyword" placeholder="キーワード検索" class="form-control border-info">
+        <input type="text" name="keyword" placeholder="タイトル検索" class="form-control border-info">
       </div>
         <button type="submit" class="btn btn-dark text-warning">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
