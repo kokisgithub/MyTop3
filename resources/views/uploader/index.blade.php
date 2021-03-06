@@ -7,7 +7,7 @@
     <h1 class="mb-5">
      プロフィール画像アップロード
     </h1>
-    <form method="post" action="{{ url('/uploaders') }}" enctype="multipart/form-data" class="form-inline">
+    <form method="post" action="{{ url('/uploader') }}" enctype="multipart/form-data" class="form-inline">
         @csrf
         <div class="form-group">
           <input type="file" name="image" class="form-control">
@@ -27,13 +27,13 @@
           </tr>
           <tr>
             @auth  
-            @isset ($uploader->image)
+            @if (!$user->image == null)
                 <td class="text-center">
-                  <img src="{{ asset('/storage/' . $uploader->image) }}" width="200" height="200">
+                  <img src="{{ asset('/storage/' . $user->image) }}" width="200" height="200">
                 </td>
             @else
               <td class="mt-4 text-center">プロフィール画像がありません</td>
-            @endisset
+            @endif
             @endauth
           </tr>
       </table>

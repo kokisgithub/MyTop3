@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UploaderRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -34,5 +34,5 @@ class UploaderRequest extends FormRequest
              'image' => '指定されたファイルが画像(jpg, png, bmp, gif, svg)ではありません'            
          ];
      }
- }
  
+}

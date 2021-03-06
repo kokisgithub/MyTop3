@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\User;
 use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {
 
-    public function index(Request $request){
+    public function index(Request $request, User $user){
         $user = Auth::user();
         if ($user) {
             $login_user_id = $user->id;

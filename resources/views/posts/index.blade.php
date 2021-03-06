@@ -17,6 +17,8 @@
             <th class="text-center pl-5">
               ユーザー
             </th>
+            <th>    
+            </th>
               @auth
                   <th>    
                   </th>    
@@ -32,6 +34,13 @@
             <td class="text-center text-secondary font-weight-bold pl-5">
             {{ optional($post->user)->name }}
             </td>
+            @if (!$post->user->image == null)
+              <td>
+                <img src="{{ asset('/storage/' . $post->user->image) }}" width="50" height="50">
+              </td>           
+            @else
+              <td></td>
+            @endif
             @auth
               @if ($post->user_id === $login_user_id)
                 <td class="text-center">
