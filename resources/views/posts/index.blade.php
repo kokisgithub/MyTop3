@@ -17,7 +17,7 @@
             <th class="text-center pl-5">
               ユーザー
             </th>
-            <th>    
+            <th>
             </th>
               @auth
                   <th>    
@@ -36,7 +36,9 @@
             </td>
             @if (!$post->user->image == null)
               <td>
-                <img src="{{ asset('/storage/' . $post->user->image) }}" width="50" height="50">
+                <a href="{{ route('profile_image') }}">
+                  <img src="{{ asset('/storage/' . $post->user->image) }}" width="50" height="50">
+                </a>
               </td>           
             @else
               <td></td>
