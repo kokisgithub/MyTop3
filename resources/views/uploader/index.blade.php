@@ -1,7 +1,6 @@
 @extends('layouts.default')
 
 @section('title', 'MyTop3')
-
 @section('content')
 
     <h1 class="mb-5">
