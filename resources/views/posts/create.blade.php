@@ -1,11 +1,11 @@
 @extends('layouts.default')
 
-@section('title', '新規作成')
+@section('title', '新規投稿')
 
 @section('content')
     <h1 class="mb-5">
         @include('layouts.return')    
-        新規作成
+        新規投稿
     </h1>
     <form method="get" action="{{ url('/posts/create') }}" class="form-inline">
     <div class="form-group">
