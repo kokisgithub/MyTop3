@@ -7,7 +7,7 @@
         @include('layouts.return')    
         新規投稿
     </h1>
-    <form method="get" action="{{ url('/posts/create') }}" class="form-inline">
+    <form method="get" action="{{ route('create') }}" class="form-inline">
     <div class="form-group">
             <select class="form-control custom-select border-info" name="bullets">
                 <option selected>記号を選ぶ</option>
