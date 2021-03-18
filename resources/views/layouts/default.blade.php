@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="container">
-    @include('layouts.nav')
+      @include('layouts.nav')
       @yield('content')
     </div>
   </body>

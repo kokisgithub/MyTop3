@@ -6,7 +6,7 @@
 
     <h1 class="mb-5">
      MyTop3
-        <a href="{{ url('/posts/create') }}" class="btn btn-outline-primary float-right">投稿する</a>
+        <a href="{{ route('create') }}" class="btn btn-outline-primary float-right">投稿する</a>
     </h1>
       @include('posts.search')
       <table class="table table-striped table-hover mt-5">
@@ -29,7 +29,7 @@
         @forelse ($posts as $post)
           <tr>
             <td>
-                <a href="{{ action('PostsController@show', $post) }}" class="font-weight-bold">{{ $post->title }}</a>
+                <a href="{{ route('show', $post) }}" class="font-weight-bold">{{ $post->title }}</a>
             </td>
             <td class="text-center text-secondary font-weight-bold pl-5">
             {{ optional($post->user)->name }}
@@ -49,7 +49,7 @@
                   @include('layouts.modal_delete_post')
                 </td>
                 <td class="text-center pr-5">
-                  <a href="{{ action('PostsController@edit', $post) }}" class="btn btn-outline-success">編集</a>
+                  <a href="{{ route('edit', $post) }}" class="btn btn-outline-success">編集</a>
                 </td>
               @else
                 <td>
