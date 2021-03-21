@@ -12,12 +12,8 @@ use App\Models\Comment;
 class SampleTest extends TestCase
 {
     use RefreshDatabase;
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
+ 
+    public function testHttp()
     {
         $this->assertTrue(true);
         
