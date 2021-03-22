@@ -9,11 +9,11 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Comment;
 
-class SampleTest extends TestCase
+class HttpTest extends TestCase
 {
     use RefreshDatabase;
  
-    public function testHttp()
+    public function testHttp() 
     {
         $this->assertTrue(true);
         
