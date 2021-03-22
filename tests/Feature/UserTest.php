@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 use App\Models\User;
 
@@ -20,14 +19,14 @@ class UserTest extends TestCase
             'password'  =>  bcrypt('test1234')
         ]);
         
-        $this->assertFalse(Auth::check());
+        $this->assertGuest();
  
         $response = $this->post(route('login'), [
             'email'     =>  $user->email,
             'password'  =>  'test1234',
         ]); 
         
-        $this->assertTrue(Auth::check());
+        $this->assertAuthenticatedAs($user);
         $response->assertRedirect('/');
     }
     
@@ -38,11 +37,11 @@ class UserTest extends TestCase
         $user = factory(User::class)->create();
         $this->actingAs($user);
     
-        $this->assertTrue(Auth::check());
+        $this->assertAuthenticatedAs($user);
 
-        $response = $this->post(route('logout')); 
+        $response = $this->post(route('logout'));  
         
-        $this->assertFalse(Auth::check());
+        $this->assertGuest();
         $response->assertRedirect('/');
     }
 }
