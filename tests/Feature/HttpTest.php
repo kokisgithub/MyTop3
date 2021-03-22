@@ -12,11 +12,26 @@ use App\Models\Comment;
 class HttpTest extends TestCase
 {
     use RefreshDatabase;
+
+    static $data = [
+                'title'     =>  'AAA',
+                'body'      =>  'BBB',
+                'user_id'   =>  1,
+            ];        
  
-    public function testHttp() 
+    public function testUser() 
     {
-        $this->assertTrue(true);
+        $user = factory(User::class)->create();
+
+        $response = $this->actingAs($user)->get(route('profile_image'));
+        $response->assertStatus(200);
         
+        $response = $this->post('/uploader', ['image' => 'AAA.jpg']); 
+        $response->assertRedirect('/uploader');    
+    }
+
+    public function testPost() 
+    {   
         $response = $this->get('/');
         $response->assertStatus(200);
                 
@@ -25,21 +40,9 @@ class HttpTest extends TestCase
         $response = $this->actingAs($user)->get(route('create'));
         $response->assertStatus(200);
                 
-        $data = [
-            'title'     =>  'AAA',
-            'body'      =>  'BBB',
-            'user_id'   =>  1,
-        ];
-        
-        $response = $this->post('/posts', $data); 
+        $response = $this->post('/posts', HttpTest::$data); 
         $response->assertRedirect('/');
        
-        $response = $this->actingAs($user)->get(route('profile_image'));
-        $response->assertStatus(200);
-        
-        $response = $this->post('/uploader', ['image' => 'AAA.jpg']); 
-        $response->assertRedirect('/uploader');
-        
         $post = factory(Post::class)->create();
         $response = $this->get(route('show', $post));
         $response->assertStatus(200);
@@ -47,24 +50,40 @@ class HttpTest extends TestCase
         $response = $this->actingAs($user)->get(route('edit', $post));
         $response->assertStatus(200);
         
-        $response = $this->patch('/posts/' . $post->id, $data); 
+        $response = $this->patch('/posts/' . $post->id, HttpTest::$data); 
         $response->assertRedirect('/');
         
         $response = $this->delete('/posts/' . $post->id); 
         $response->assertRedirect('/');
         
+        $response = $this->get('/no_route');
+        $response->assertStatus(404);
+    }
+
+    public function testComment() 
+    {
+        $user = factory(User::class)->create();
+
+        $post = factory(Post::class)->create();
+
+        $response = $this->actingAs($user)->get(route('create'));
+
+        $response = $this->post('/posts', HttpTest::$data); 
+
+        $response = $this->get(route('show', $post));
+        $response->assertStatus(200);
+
         $comment = factory(Comment::class)->create();
+        
         $response = $this->post('/posts/'. $comment->post_id .'/comments', [
             'body'      =>  'CCC',
             'user_id'   =>  1,
             'post_id'   =>  1,
         ]); 
+
         $response->assertRedirect(route('show', $comment->post_id));
             
         $response = $this->from(route('show', $post))->delete('/posts/' .$comment->post->id. '/comments/' . $comment->id); 
-        $response->assertRedirect(route('show', $post));
-        
-        $response = $this->get('/no_route');
-        $response->assertStatus(404);
+        $response->assertRedirect(route('show', $post));        
     }
 }
