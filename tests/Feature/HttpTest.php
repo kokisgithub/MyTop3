@@ -13,7 +13,7 @@ class HttpTest extends TestCase
 {
     use RefreshDatabase;
 
-    static $data = [
+    private static $data = [
                 'title'     =>  'AAA',
                 'body'      =>  'BBB',
                 'user_id'   =>  1,
