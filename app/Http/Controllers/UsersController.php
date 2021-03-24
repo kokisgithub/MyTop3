@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
 
-
 class UsersController extends Controller
 {
     public function imageIndex(){
@@ -29,5 +28,4 @@ class UsersController extends Controller
         
         return redirect('/uploader');
     }
-
 }

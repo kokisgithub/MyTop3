@@ -32,6 +32,6 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
   Auth::routes([
     'reset'   =>  false,
     'verify'  =>  false
-  ]);
-});
+    ]);
+  });
 Route::get('/admin/home', 'Admin\AdminHomeController@index')->name('admin_home');

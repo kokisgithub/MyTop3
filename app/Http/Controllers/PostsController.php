@@ -11,14 +11,10 @@ use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {
-
     public function index(Request $request, User $user){
         $user = Auth::user();
-        if ($user) {
-            $login_user_id = $user->id;
-        } else {
-            $login_user_id = '';
-        }
+        $login_user_id = $user !== null ?  $user->id : null;
+        
         $keyword = $request->input('keyword');
         $query_p = Post::query();
         if ($request->filled('keyword')) {
@@ -30,11 +26,8 @@ class PostsController extends Controller
 
     public function show(Post $post){
         $user = Auth::user();
-        if ($user) {
-            $login_user_id = $user->id;
-        } else {
-            $login_user_id = '';
-        }
+        $login_user_id = $user !== null ?  $user->id : null;
+
         $post->comments = Comment::where('post_id', $post->id)->orderBy('created_at', 'desc')->get();
         return view('posts.show')->with('post', $post)->with('login_user_id', $login_user_id);
     }
@@ -71,8 +64,8 @@ class PostsController extends Controller
     }
 
     public function store(PostRequest $request){
-        $post = new Post();
         $user = Auth::user();
+        $post = new Post();
         $post->user_id = $user->id;
         $post->title = $request->title;
         $post->body = $request->body;
@@ -97,5 +90,4 @@ class PostsController extends Controller
         $post->delete();
         return redirect('/');
     }
-
 }
