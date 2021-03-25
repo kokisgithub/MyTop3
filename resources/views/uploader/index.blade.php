@@ -27,13 +27,13 @@
           </tr>
           <tr>
             @auth  
-            @if (!$user->image == null)
-                <td class="text-center">
-                  <img src="{{ asset('/storage/' . $user->image) }}" width="300" height="300">
-                </td>
-            @else
-              <td class="mt-4 text-center">プロフィール画像がありません</td>
-            @endif
+              @if (!$user->image == null)
+                  <td class="text-center">
+                    <img src="{{ asset('/storage/' . $user->image) }}" width="300" height="300">
+                  </td>
+              @else
+                <td class="mt-4 text-center">プロフィール画像がありません</td>
+              @endif
             @endauth
           </tr>
       </table>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Symbol;
 use App\Models\User;
 use App\Http\Requests\PostRequest;
 
@@ -32,35 +33,10 @@ class PostsController extends Controller
         return view('posts.show')->with('post', $post)->with('login_user_id', $login_user_id);
     }
 
-    public function create(Request $request){
-        $bullets = $request->input('bullets');
-        if ($bullets == 1) {
-        $bullets = '
-①
-②
-③';
-        } elseif ($bullets == 2) {
-            $bullets = '
-1.
-2.
-3.';
-        } elseif ($bullets == 3) {
-            $bullets = '
-Ⅰ.
-Ⅱ.
-Ⅲ.';
-        } elseif ($bullets == 4) {
-            $bullets = '
-壱 
-弐 
-参 ';
-        } elseif ($bullets == 5) {
-            $bullets = '
-・
-・
-・';
-        } 
-        return view('posts.create')->with('bullets', $bullets);
+    public function create(Request $request, Symbol $symbol){
+        $symbols = Symbol::all();
+        $selected_symbol = $request->input('selected_symbol');
+        return view('posts.create')->with('symbols', $symbols)->with('selected_symbol', $selected_symbol);
     }
 
     public function store(PostRequest $request){
