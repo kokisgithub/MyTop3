@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             AdminsTableSeeder::class,
             PostsTableSeeder::class,
             CommentsTableSeeder::class,
+            SymbolsTableSeeder::class,
             ]);
     }
 }

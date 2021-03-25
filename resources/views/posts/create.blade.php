@@ -9,15 +9,13 @@
     </h1>
     <form method="get" action="{{ route('create') }}" class="form-inline">
         <div class="form-group">
-                <select class="form-control custom-select border-info" name="bullets">
-                    <option selected>記号を選ぶ</option>
-                    <option value="1">① ② ③</option>
-                    <option value="2">1. 2. 3.</option>
-                    <option value="3">Ⅰ. Ⅱ. Ⅲ.</option>
-                    <option value="4">壱 弐 参</option>
-                    <option value="5">・ ・ ・</option>
+                <select class="form-control custom-select border-info" name="selected_symbol">
+                    <option disabled selected hidden>記号を選ぶ</option>
+                    @foreach ($symbols as $symbol)
+                        <option value="{{ $symbol->body }}">{{ $symbol->symbol }}</option>
+                    @endforeach
                 </select>
-        </div>
+        </div> 
         <button type="submit" class="btn btn-dark text-warning">選択</button>
     </form>
     <form method="post" action="{{ url('/posts') }}">
@@ -29,7 +27,7 @@
                 @enderror
         </div>
         <div class="form-group">
-            <textarea name="body" placeholder="本文を入力" class="form-control border-info" rows="3">{{ old('body', $bullets) }}</textarea>
+            <textarea name="body" placeholder="本文を入力" class="form-control border-info" rows="3">{{ old('body', $selected_symbol) }}</textarea>
             @error('body')
                 <span class="text-danger">{{ $message }}</span>
             @enderror

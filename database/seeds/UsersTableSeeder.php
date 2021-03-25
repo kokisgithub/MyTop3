@@ -5,14 +5,21 @@ use Illuminate\Database\Seeder;
 class UsersTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+    * Run the database seeds.
+    *
+    * @return void
+    */
     public function run()
     {
         DB::table('users')->insert([
-          [
+            [
+                'name'              => 'user',
+                'email'             => 'user@example.com',
+                'password'          => Hash::make('12345678'),
+                'remember_token'    => Str::random(10),
+                'image'             => null,
+            ],
+            [
               'name'              => 'ジョン',
               'email'             => 'john@example.com',
               'password'          => Hash::make('19401009'),
@@ -39,13 +46,6 @@ class UsersTableSeeder extends Seeder
               'password'          => Hash::make('19400707'),
               'remember_token'    => Str::random(10),
               'image'             => 'broken-drumstick-2178387_1280_604c82e9aa261.jpg',
-          ],
-          [
-              'name'              => 'user',
-              'email'             => 'user@example.com',
-              'password'          => Hash::make('12345678'),
-              'remember_token'    => Str::random(10),
-              'image'             => null,
           ],
         ]);
     }
