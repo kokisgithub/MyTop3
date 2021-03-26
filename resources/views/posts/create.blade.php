@@ -3,11 +3,11 @@
 @section('title', '新規投稿')
 
 @section('content')
-    <h1 class="mb-5">
+    <h1 class="mb-4">
         @include('layouts.return')    
         新規投稿
     </h1>
-    <form method="get" action="{{ route('create') }}" class="form-inline">
+    <form method="get" action="{{ route('create') }}" class="form-inline ml-2">
         <div class="form-group">
                 <select class="form-control custom-select border-info" name="selected_symbol">
                     <option disabled selected hidden>記号を選ぶ</option>
@@ -18,7 +18,7 @@
         </div> 
         <button type="submit" class="btn btn-dark text-warning">選択</button>
     </form>
-    <form method="post" action="{{ url('/posts') }}">
+    <form method="post" action="{{ url('/posts') }}" class="ml-2">
         @csrf
         <div class="form-group">
                 <input type="text" name="title" placeholder="タイトルを入力" value="{{ old('title') }}" class="form-control border-info mt-4">

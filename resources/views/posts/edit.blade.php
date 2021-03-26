@@ -3,11 +3,11 @@
 @section('title', '編集')
 
 @section('content')
-    <h1 class="mb-5">
+    <h1 class="mb-4">
         @include('layouts.return')    
         編集
     </h1>
-    <form method="post" action="{{ url('/posts', $post->id) }}">
+    <form method="post" action="{{ url('/posts', $post->id) }}" class="ml-2">
         @csrf
         {{ method_field('patch') }}
         <div class="form-group">
