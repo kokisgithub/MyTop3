@@ -4,10 +4,10 @@
 
 @section('content')
 
-    <h1 class="mb-5">
+    <h2 class="mb-5">
      プロフィール画像アップロード
-    </h1>
-    <form method="post" action="{{ route('profile_image') }}" enctype="multipart/form-data" class="form-inline">
+    </h2>
+    <form method="post" action="{{ route('profile_image') }}" enctype="multipart/form-data" class="form-inline ml-2">
         @csrf
         <div class="form-group">
           <input type="file" name="image" class="form-control">
@@ -19,7 +19,7 @@
               <span class="text-danger">{{ $message }}</span>
           @enderror
     </form>
-      <table class="table table-striped table-hover mt-5">
+      <table class="table table-striped table-hover mt-4">
           <tr>
             <th class="text-center">
               <h2>{{ $user->name }}</h2>

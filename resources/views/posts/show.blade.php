@@ -4,15 +4,20 @@
 
 @section('content')
     
-    <h1>
+    <h6 class="text-secondary">
+        @if (!$post->user->image == null)
+            <img src="{{ asset('/storage/' . $post->user->image) }}" width="50" height="50">
+        @endif
+        {{ $post->user->name }}
         @include('layouts.return')    
+    </h6>
+    <h3 class="mt-4 mb-4 ml-3 text-danger">
         {{ $post->title }}
-    </h1>
-    <h3 class="mt-4 mb-5">
-     {!! nl2br(e($post->body)) !!} 
     </h3>
-    
-    <h4 class="mt-5">コメント</h4>
+    <h4 class="mt-4 mb-5 ml-5 text-danger">
+        {!! nl2br(e($post->body)) !!} 
+    </h4>
+    <h5 class="mt-5">コメント</h5>
         <form method="post" action="{{ action('CommentsController@store', $post) }}" >
             @csrf
             <div class="form-group mt-3">
@@ -23,7 +28,7 @@
             </div>
             <input type="submit" value="コメントする" class="btn btn-primary">
         </form>
-        <table class="table table-striped table-hover mt-5">
+        <table class="table table-striped table-hover mt-4">
             <tr>
                 <th>
                     コメント
@@ -42,6 +47,9 @@
                         {{ $comment->body }}
                     </td>
                     <td class="text-secondary text-center font-weight-bold pl-5">
+                        @if (!$comment->user->image == null)
+                                <img src="{{ asset('/storage/' . $comment->user->image) }}" width="50" height="50">
+                        @endif
                         {{ optional($comment->user)->name }}
                     </td>
                     @auth

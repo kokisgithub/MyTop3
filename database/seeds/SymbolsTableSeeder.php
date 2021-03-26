@@ -26,7 +26,7 @@ class SymbolsTableSeeder extends Seeder
             ],
             [
                 'symbol'    => 'I. II. III.',
-                'body'      => '  I.
+                'body'      => 'I.
 II.
 III.',
             ],

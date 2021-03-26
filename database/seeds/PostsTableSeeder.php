@@ -32,8 +32,8 @@ class PostsTableSeeder extends Seeder
             ],
             [
                 'title'            => '行ってみたい国',
-                'body'             => '  I.イタリア
- II.フランス 
+                'body'             => 'I.イタリア
+II.フランス 
 III.イギリス',
                 'user_id'          => 4,
                 'created_at'       => date('Y-m-d H:i:2'),
@@ -60,8 +60,8 @@ III.イギリス',
             [
                 'title'            => '好きな季節',
                 'body'             => '・秋
-・
-・',
+・春
+・冬',
                 'user_id'          => 2,
                 'created_at'       => date('Y-m-d H:i:5'),
                 'updated_at'       => date('Y-m-d H:i:5'),

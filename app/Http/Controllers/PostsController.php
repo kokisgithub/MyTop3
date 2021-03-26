@@ -33,7 +33,7 @@ class PostsController extends Controller
         return view('posts.show')->with('post', $post)->with('login_user_id', $login_user_id);
     }
 
-    public function create(Request $request, Symbol $symbol){
+    public function create(Request $request){
         $symbols = Symbol::all();
         $selected_symbol = $request->input('selected_symbol');
         return view('posts.create')->with('symbols', $symbols)->with('selected_symbol', $selected_symbol);
