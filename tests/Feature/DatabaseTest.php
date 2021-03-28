@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Admin;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Symbol;
 
 class DatabaseTest extends TestCase
 {
@@ -139,5 +140,26 @@ class DatabaseTest extends TestCase
         $this->assertDatabaseMissing('comments', $comment);
 
         $this->assertCount(0, Comment::all());
+    }
+
+    public function testSymbol()
+    {
+        $symbols =  [
+            'symbol'    => '① ② ③',
+            'body'      => '①
+②
+③',
+        ];
+
+    factory(Symbol::class)->create($symbols);
+        
+        $this->assertTrue(
+            Schema::hasColumns('symbols',[
+                'id', 'symbol', 'body',
+                ])
+            );
+            
+        $this->assertDatabaseHas('symbols', $symbols);
+        $this->assertCount(1, Symbol::all());
     }
 }
