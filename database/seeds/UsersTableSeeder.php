@@ -13,6 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
+                'id'                => 1,
                 'name'              => 'user',
                 'email'             => 'user@example.com',
                 'password'          => Hash::make('12345678'),
@@ -20,6 +21,7 @@ class UsersTableSeeder extends Seeder
                 'image'             => null,
             ],
             [
+              'id'                => 2,
               'name'              => 'ジョン',
               'email'             => 'john@example.com',
               'password'          => Hash::make('19401009'),
@@ -27,6 +29,7 @@ class UsersTableSeeder extends Seeder
               'image'             => 'black-and-white-1284026_1280_604c7e6d9ee6e.jpg',
           ],
           [
+              'id'                => 3,
               'name'              => 'ポール',
               'email'             => 'paul@example.com',
               'password'          => Hash::make('19420618'),
@@ -34,6 +37,7 @@ class UsersTableSeeder extends Seeder
               'image'             => 'bass-guitar-433969_1280_604c80d48485d.jpg',
           ],
           [
+              'id'                => 4,
               'name'              => 'ジョージ',
               'email'             => 'george@example.com',
               'password'          => Hash::make('19430225'),
@@ -41,6 +45,7 @@ class UsersTableSeeder extends Seeder
               'image'             => 'electric-guitars-311034_1280_604c82847c79d.png',
           ],
           [
+              'id'                => 5,
               'name'              => 'リンゴ',
               'email'             => 'ringo@example.com',
               'password'          => Hash::make('19400707'),

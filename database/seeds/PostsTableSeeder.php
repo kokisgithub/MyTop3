@@ -13,6 +13,7 @@ class PostsTableSeeder extends Seeder
     {
         DB::table('posts')->insert([
             [
+                'id'               => 1,
                 'title'            => '好きな映画TOP3',
                 'body'             => '①ゴッドファーザー
 ②コーヒーをめぐる冒険
@@ -22,6 +23,7 @@ class PostsTableSeeder extends Seeder
                 'updated_at'       => date('Y-m-d H:i:0'),
             ],
             [
+                'id'               => 2,
                 'title'            => '好きなビートルズの曲TOP3',
                 'body'             => "1.Something
 2.I'm Only Sleeping
@@ -31,6 +33,7 @@ class PostsTableSeeder extends Seeder
                 'updated_at'       => date('Y-m-d H:i:1'),
             ],
             [
+                'id'               => 3,
                 'title'            => '行ってみたい国',
                 'body'             => 'I.イタリア
 II.フランス 
@@ -40,6 +43,7 @@ III.イギリス',
                 'updated_at'       => date('Y-m-d H:i:2'),
             ],
             [
+                'id'               => 4,
                 'title'            => '好きな寿司ネタ',
                 'body'             => '壱 鯛
 弐 ヒラマサ 
@@ -49,6 +53,7 @@ III.イギリス',
                 'updated_at'       => date('Y-m-d H:i:3'),
             ],
             [
+                'id'               => 5,
                 'title'            => '好きな色',
                 'body'             => '1.紺
 2.黒 
@@ -58,6 +63,7 @@ III.イギリス',
                 'updated_at'       => date('Y-m-d H:i:4'),
             ],
             [
+                'id'               => 6,
                 'title'            => '好きな季節',
                 'body'             => '・秋
 ・春
