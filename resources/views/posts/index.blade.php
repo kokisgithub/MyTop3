@@ -33,7 +33,7 @@
             </td>
             <td class="text-center text-secondary font-weight-bold pl-5">
               @if (!$post->user->image == null)
-                <img src="{{ asset('/storage/' . $post->user->image) }}" width="50" height="50">
+                <img src="data:image/png;base64,{{ $post->user->image }}" width="50" height="50">
               @endif
               {{ optional($post->user)->name }}
             </td>

@@ -16,16 +16,11 @@ class UsersController extends Controller
         ]);
     }
     
+    
     public function upload(UserRequest $request){
         $user = Auth::user();
-        $imageName = $request->file('image')->getClientOriginalName(); 
-        $extension = $request->file('image')->getClientOriginalExtension();
-        $newImageName = pathinfo($imageName, PATHINFO_FILENAME) . "_" . uniqid() . "." . $extension;
-        $path = $request->file('image')->storeAs('public', $newImageName);
-        $filename = basename($path);
-        $user->image = $filename;
+        $user->image = base64_encode(file_get_contents($request->image));
         $user->save();
-        
         return redirect('/uploader');
     }
 }

@@ -6,7 +6,7 @@
     
     <h6 class="text-secondary">
         @if (!$post->user->image == null)
-            <img src="{{ asset('/storage/' . $post->user->image) }}" width="50" height="50">
+            <img src="data:image/png;base64,{{ $post->user->image }}" width="50" height="50">
         @endif
         {{ $post->user->name }}
         @include('layouts.return')    
@@ -48,7 +48,7 @@
                     </td>
                     <td class="text-secondary text-center font-weight-bold pl-5">
                         @if (!$comment->user->image == null)
-                                <img src="{{ asset('/storage/' . $comment->user->image) }}" width="50" height="50">
+                            <img src="data:image/png;base64,{{ $comment->user->image }}" width="50" height="50">
                         @endif
                         {{ optional($comment->user)->name }}
                     </td>
