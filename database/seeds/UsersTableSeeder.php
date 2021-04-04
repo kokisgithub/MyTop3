@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
               'email'             => 'john@example.com',
               'password'          => Hash::make('19401009'),
               'remember_token'    => Str::random(10),
-              'image'             => 'black-and-white-1284026_1280_604c7e6d9ee6e.jpg',
+              'image'             => null,
           ],
           [
               'id'                => 3,
@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
               'email'             => 'paul@example.com',
               'password'          => Hash::make('19420618'),
               'remember_token'    => Str::random(10),
-              'image'             => 'bass-guitar-433969_1280_604c80d48485d.jpg',
+              'image'             => null,
           ],
           [
               'id'                => 4,
@@ -42,7 +42,7 @@ class UsersTableSeeder extends Seeder
               'email'             => 'george@example.com',
               'password'          => Hash::make('19430225'),
               'remember_token'    => Str::random(10),
-              'image'             => 'electric-guitars-311034_1280_604c82847c79d.png',
+              'image'             => null,
           ],
           [
               'id'                => 5,
@@ -50,7 +50,7 @@ class UsersTableSeeder extends Seeder
               'email'             => 'ringo@example.com',
               'password'          => Hash::make('19400707'),
               'remember_token'    => Str::random(10),
-              'image'             => 'broken-drumstick-2178387_1280_604c82e9aa261.jpg',
+              'image'             => null,
           ],
         ]);
     }

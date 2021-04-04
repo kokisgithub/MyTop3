@@ -29,7 +29,7 @@
             @auth  
               @if (!$user->image == null)
                   <td class="text-center">
-                    <img src="{{ asset('/storage/' . $user->image) }}" width="300" height="300">
+                    <img src="data:image/png;base64,{{ $user->image }}" width="30%" height="auto">
                   </td>
               @else
                 <td class="mt-4 text-center">プロフィール画像がありません</td>
