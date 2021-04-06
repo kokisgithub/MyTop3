@@ -3,6 +3,7 @@
 @section('title', '新規投稿')
 
 @section('content')
+
     <h1 class="mb-4">
         @include('layouts.return')    
         新規投稿

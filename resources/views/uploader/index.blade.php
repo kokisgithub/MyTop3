@@ -5,7 +5,8 @@
 @section('content')
 
     <h2 class="mb-5">
-     プロフィール画像アップロード
+      @include('layouts.return')    
+      プロフィール画像アップロード
     </h2>
     <form method="post" action="{{ route('profile_image') }}" enctype="multipart/form-data" class="form-inline ml-2">
         @csrf
