@@ -11,38 +11,38 @@
       @include('posts.search')
       <table class="table table-striped table-hover mt-2">
           <tr>
-            <th>
+            <th scope="col">
               タイトル
             </th>
-            <th class="text-center pl-5">
+            <th scope="col">
               ユーザー
             </th>
-            <th>
-            </th>
-              @auth
-                  <th>    
-                  </th>    
-                  <th>    
-                  </th>    
-              @endauth
+            @auth
+              <th scope="col">    
+              </th>    
+              <th scope="col">
+              </th>    
+            @endauth
           </tr>
         @forelse ($posts as $post)
           <tr>
             <td>
-                <u><a href="{{ route('show', $post) }}" class="font-weight-bold">{{ $post->title }}</a><u>
+                <u><a href="{{ route('show', $post) }}" class="font-weight-bold">{{ $post->title }}</a></u>
             </td>
-            <td class="text-center text-secondary font-weight-bold pl-5">
+            <td class="text-secondary font-weight-bold">
               @if (!$post->user->image == null)
                 <img src="data:image/png;base64,{{ $post->user->image }}" width="50" height="50">
               @endif
-              {{ optional($post->user)->name }}
+              <p>
+               {{ optional($post->user)->name }}
+              </p>
             </td>
             @auth
               @if ($post->user_id === $login_user_id)
-                <td class="text-center">
+                <td>
                   @include('layouts.modal_delete_post')
                 </td>
-                <td class="text-center pr-5">
+                <td>
                   <a href="{{ route('edit', $post) }}" class="btn btn-outline-success">編集</a>
                 </td>
               @else
