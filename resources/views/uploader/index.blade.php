@@ -5,8 +5,14 @@
 @section('content')
 
     <h2 class="mb-5">
-      @include('layouts.return')    
-      プロフィール画像アップロード
+      <div class="row justify-content-between">
+        <div class="col">
+          プロフィール画像アップロード
+        </div>
+        <div class="col-auto">
+          @include('layouts.return')    
+        </div>
+      </div>
     </h2>
     <form method="post" action="{{ route('profile_image') }}" enctype="multipart/form-data" class="form-inline ml-2">
         @csrf
@@ -20,22 +26,22 @@
               <span class="text-danger">{{ $message }}</span>
           @enderror
     </form>
-      <table class="table table-striped table-hover mt-4">
-          <tr>
-            <th class="text-center">
-              <h2>{{ $user->name }}</h2>
-            </th>
-          </tr>
-          <tr>
+    <div class="row justify-content-center mt-5">  
+      <div class="col-md-8">  
+        <div class="card">  
+          <div class="card-header font-weight-bold text-center">
+            {{ $user->name }}
+          </div>
+          <div class="card-body text-center">
             @auth  
               @if (!$user->image == null)
-                  <td class="text-center">
-                    <img src="data:image/png;base64,{{ $user->image }}" width="30%" height="auto">
-                  </td>
+                <img src="data:image/png;base64,{{ $user->image }}" width="40%" height="auto">
               @else
-                <td class="mt-4 text-center">プロフィール画像がありません</td>
+                プロフィール画像がありません
               @endif
             @endauth
-          </tr>
-      </table>
+          </div>
+        </div>
+      </div>
+    </div>
 @endsection

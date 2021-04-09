@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-outline-danger float-right mr-5" data-toggle="modal" data-target="#exampleModal_c{{ $comment->id }}">削除</button>
+<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal_c{{ $comment->id }}">削除</button>
   
   <!-- Modal -->
   <div class="modal fade" id="exampleModal_c{{ $comment->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
