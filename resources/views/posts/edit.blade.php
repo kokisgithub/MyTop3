@@ -4,8 +4,14 @@
 
 @section('content')
     <h1 class="mb-4">
-        @include('layouts.return')    
-        編集
+        <div class="row justify-content-between">
+            <div class="col">
+                編集
+            </div>
+            <div class="col-auto">
+                @include('layouts.return')    
+            </div>
+        </div>
     </h1>
     <form method="post" action="{{ url('/posts', $post->id) }}" class="ml-2">
         @csrf
