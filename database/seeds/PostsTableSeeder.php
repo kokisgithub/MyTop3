@@ -72,6 +72,27 @@ III.イギリス',
                 'created_at'       => date('Y-m-d H:i:5'),
                 'updated_at'       => date('Y-m-d H:i:5'),
             ],
+            [
+                'id'               => 7,
+                'title'            => '好きなバイクメーカー',
+                'body'             => '①KAWASAKI
+②アプリリア
+③YAMAHA',
+                'user_id'          => 3,
+                'created_at'       => date('Y-m-d H:i:6'),
+                'updated_at'       => date('Y-m-d H:i:6'),
+            ],
+            [
+                'id'               => 8,
+                'title'            => 'おにぎりの具決定戦',
+                'body'             => '最早これ以外買わない
+🍙明太子
+🍙鯖
+🍙昆布',
+                'user_id'          => 5,
+                'created_at'       => date('Y-m-d H:i:7'),
+                'updated_at'       => date('Y-m-d H:i:7'),
+            ],
         ]);
     }
 }
