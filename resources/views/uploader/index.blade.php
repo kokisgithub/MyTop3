@@ -5,7 +5,7 @@
 @section('content')
 
     <h2 class="mb-5">
-      <div class="row justify-content-between">
+      <div class="row">
         <div class="col">
           プロフィール画像アップロード
         </div>

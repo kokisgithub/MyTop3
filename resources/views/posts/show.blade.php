@@ -5,7 +5,7 @@
 @section('content')
     
     <h6 class="text-secondary">
-        <div class="row justify-content-between">
+        <div class="row">
             <div class="col">
                 @if (!$post->user->image == null)
                     <img src="data:image/png;base64,{{ $post->user->image }}" width="50" height="50">

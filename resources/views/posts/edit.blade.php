@@ -4,7 +4,7 @@
 
 @section('content')
     <h1 class="mb-4">
-        <div class="row justify-content-between">
+        <div class="row">
             <div class="col">
                 編集
             </div>
