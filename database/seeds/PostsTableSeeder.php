@@ -55,9 +55,9 @@ III.イギリス',
             [
                 'id'               => 5,
                 'title'            => '好きな色',
-                'body'             => '1.紺
-2.黒 
-3.茶色',
+                'body'             => '➌茶色
+➋黒 
+➊紺',
                 'user_id'          => 4,
                 'created_at'       => date('Y-m-d H:i:4'),
                 'updated_at'       => date('Y-m-d H:i:4'),
@@ -75,9 +75,9 @@ III.イギリス',
             [
                 'id'               => 7,
                 'title'            => '好きなバイクメーカー',
-                'body'             => '①KAWASAKI
-②アプリリア
-③YAMAHA',
+                'body'             => '3位 YAMAHA
+2位 アプリリア
+1位 KAWASAKI',
                 'user_id'          => 3,
                 'created_at'       => date('Y-m-d H:i:6'),
                 'updated_at'       => date('Y-m-d H:i:6'),
