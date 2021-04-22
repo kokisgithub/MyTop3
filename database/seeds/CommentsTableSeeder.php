@@ -112,7 +112,7 @@ class CommentsTableSeeder extends Seeder
                 'id'               => 13,
                 'body'             => 'リンゴさん、シャケは？！',
                 'post_id'          => 8,
-                'user_id'          => 5,
+                'user_id'          => 4,
                 'created_at'       => date('Y-m-d H:i:12'),
                 'updated_at'       => date('Y-m-d H:i:12'),
             ],
