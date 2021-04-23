@@ -4,44 +4,40 @@
 
 @section('content')
 
-    <h2 class="mb-5">
+    <h2 class="mb-4">
       <div class="row">
         <div class="col">
-          プロフィール画像アップロード
+          <h3>プロフィール画像<br class="d-inline d-sm-none" />アップロード</h3>
         </div>
         <div class="col-auto">
           @include('layouts.return')    
         </div>
       </div>
     </h2>
-    <form method="post" action="{{ route('profile_image') }}" enctype="multipart/form-data" class="form-inline ml-2">
-        @csrf
-        <div class="form-group">
-          <input type="file" name="image" class="form-control">
-        </div>
-        <div class="form-group">        
-          <input type="submit" value="アップロード" class="btn btn-info">
-        </div>
-          @error('image')
-              <span class="text-danger">{{ $message }}</span>
-          @enderror
+    <form method="post" action="{{ route('profile_image') }}" enctype="multipart/form-data" class="form-inline">
+      @csrf
+      <div class="form-group">
+        <input type="file" name="image" class="form-control border-0">
+      </div>
+      <div class="form-group">        
+        <input type="submit" value="アップロード" class="btn btn-info">
+      </div>
+        @error('image')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
     </form>
-    <div class="row justify-content-center mt-5">  
-      <div class="col-md-8">  
-        <div class="card">  
-          <div class="card-header font-weight-bold text-center">
-            {{ $user->name }}
-          </div>
-          <div class="card-body text-center">
-            @auth  
-              @if (!$user->image == null)
-                <img src="data:image/png;base64,{{ $user->image }}" width="40%" height="auto">
-              @else
-                プロフィール画像がありません
-              @endif
-            @endauth
-          </div>
-        </div>
+    <p><h3 class="font-weight-bold text-center my-5">
+      {{ $user->name }}
+    </h3></p>
+    <div class="row justify-content-center my-4 mx-auto">  
+      <div class="col-md-4 col-sm-8">   
+        @auth  
+          @if (!$user->image == null)
+            <img src="data:image/png;base64,{{ $user->image }}" class="card-img" width="20%" height="auto">
+          @else
+            <p class="text-center">プロフィール画像がありません</p>
+          @endif
+        @endauth
       </div>
     </div>
 @endsection
