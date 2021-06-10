@@ -1,0 +1,48 @@
+{
+    "name": "ucan-lab/laravel-dacapo",
+    "description": "Laravel migration support tools",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "ucan-lab",
+            "email": "35098175+ucan-lab@users.noreply.github.com"
+        }
+    ],
+    "keywords": [
+        "laravel",
+        "dacapo",
+        "migration"
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "laravel/framework": ">=6",
+        "symfony/yaml": "^5.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.3",
+        "orchestra/testbench": "^3.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "UcanLab\\LaravelDacapo\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "UcanLab\\LaravelDacapo\\Test\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "UcanLab\\LaravelDacapo\\Providers\\ConsoleServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpunit"
+        ]
+    }
+}
