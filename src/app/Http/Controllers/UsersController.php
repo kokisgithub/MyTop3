@@ -9,13 +9,19 @@ use App\Http\Requests\UserRequest;
 
 class UsersController extends Controller
 {
+    public function profile(){
+        $user = Auth::user();
+        return view('profile.profile', [
+            'user'            =>  $user,
+        ]);
+    }
+    
     public function imageIndex(){
         $user = Auth::user();
         return view('profile.upload', [
             'user'            =>  $user,
         ]);
-    }
-    
+    }    
     
     public function upload(UserRequest $request){
         $user = Auth::user();
