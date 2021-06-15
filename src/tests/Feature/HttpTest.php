@@ -25,12 +25,12 @@ class HttpTest extends TestCase
 
         $response = $this->actingAs($user)->get(route('profile_image'));
         $response->assertStatus(200);
-        $response->assertViewIs('uploader.index');
+        $response->assertViewIs('profile.upload');
         $response->assertViewHas('user');
         $response->assertSeeText('プロフィール画像アップロード');
         
-        $response = $this->post('/uploader', ['image' => 'AAA.jpg']); 
-        $response->assertRedirect('/uploader');    
+        $response = $this->post('/profile/upload', ['image' => 'AAA.jpg']); 
+        $response->assertRedirect('/profile/upload');    
     }
 
     public function testPost() 
