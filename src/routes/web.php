@@ -20,6 +20,8 @@ Route::patch('/posts/{post}', 'PostsController@update')->middleware('auth');
 Route::delete('/posts/{post}', 'PostsController@destroy')->middleware('auth');
 Route::post('/posts/{post}/comments', 'CommentsController@store')->middleware('auth');
 Route::delete('/posts/{post}/comments/{comment}', 'CommentsController@destroy')->middleware('auth');
+
+Route::get('/profile/{user}', 'UsersController@profile')->where('user', '[0-9]+')->name('profile');
 Route::get('/profile/upload', 'UsersController@imageIndex')->name('profile_image')->middleware('auth');
 Route::post('/profile/upload', 'UsersController@upload')->middleware('auth');
 

@@ -4,16 +4,13 @@
 
 @section('content')
 
-    <h2 class="mb-4">
-      <div class="row">
-        <div class="col">
-          <h3>プロフィール画像<br class="d-inline d-sm-none" />アップロード</h3>
-        </div>
-        <div class="col-auto">
-          @include('layouts.return')    
-        </div>
+    <div class="row mb-4">
+      <div class="col">
+        <h3>プロフィール画像<br class="d-inline d-sm-none mb-4" />アップロード</h3>
       </div>
-    </h2>
+      <div class="col-auto">
+      </div>
+    </div>
     <form method="post" action="{{ route('profile_image') }}" enctype="multipart/form-data" class="form-inline">
       @csrf
       <div class="form-group">
