@@ -7,9 +7,7 @@
     <div class="row mb-4">
       <div class="col">
         <h3>プロフィール画像<br class="d-inline d-sm-none mb-4" />アップロード</h3>
-      </div>
-      <div class="col-auto">
-      </div>
+      </div>      
     </div>
     <form method="post" action="{{ route('profile_image') }}" enctype="multipart/form-data" class="form-inline">
       @csrf

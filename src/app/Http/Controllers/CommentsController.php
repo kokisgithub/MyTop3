@@ -15,7 +15,7 @@ class CommentsController extends Controller
             $user = Auth::user();
             $comment->user_id = $user->id;    
             $post->comments()->save($comment);
-            return redirect()->route('show', $post);   
+            return redirect()->route('show', $post);
     }
 
     public function destroy(Post $post, Comment $comment) {

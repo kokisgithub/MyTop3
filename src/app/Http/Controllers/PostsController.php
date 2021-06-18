@@ -17,11 +17,11 @@ class PostsController extends Controller
         $login_user_id = $user !== null ?  $user->id : null;
         
         $keyword = $request->input('keyword');
-        $query_p = Post::query();
+        $query = Post::query();
         if ($request->filled('keyword')) {
-            $query_p->where('title', 'like', '%'. $keyword . '%');    
+            $query->where('title', 'like', '%'. $keyword . '%');    
         }
-        $posts = $query_p->latest()->paginate(5);
+        $posts = $query->latest()->paginate(5);
         return view('posts.index')->with('posts', $posts)->with('keyword', $keyword)->with('login_user_id', $login_user_id);
     }
 
@@ -59,11 +59,12 @@ class PostsController extends Controller
         $post->title = $request->title;
         $post->body = $request->body;
         $post->save();
-        return redirect('/');
+        return redirect()->route('profile', $user);
     }
 
     public function destroy(Post $post){
+        $user = Auth::user();
         $post->delete();
-        return redirect('/');
+        return redirect()->route('profile', $user);
     }
 }

@@ -12,9 +12,6 @@
                 @endif
                 {{ $post->user->name }}
             </div>
-            <div class="col-auto">
-                @include('layouts.return')    
-            </div>
         </div>
     </h6>
     <h3 class="mt-4 mb-4 ml-3 text-danger">

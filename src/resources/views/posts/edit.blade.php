@@ -8,9 +8,7 @@
             <div class="col">
                 編集
             </div>
-            <div class="col-auto">
-                @include('layouts.return')    
-            </div>
+            
         </div>
     </h1>
     <form method="post" action="{{ url('/posts', $post->id) }}" class="ml-2">
