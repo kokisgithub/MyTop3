@@ -23,12 +23,6 @@
         <th scope="col">
           ユーザー
         </th>
-        @auth
-          <th scope="col">    
-          </th>    
-          <th scope="col">
-          </th>    
-        @endauth
       </tr>
     @forelse ($posts as $post)
       <tr>
@@ -43,21 +37,6 @@
             {{ optional($post->user)->name }}
           </p>
         </td>
-        @auth
-          @if ($post->user_id === $login_user_id)
-            <td>
-              @include('layouts.modal_delete_post')
-            </td>
-            <td>
-              <a href="{{ route('edit', $post) }}" class="btn btn-outline-success">編集</a>
-            </td>
-          @else
-            <td>
-            </td>
-            <td>
-            </td>
-          @endif
-        @endauth
     @empty
         <td class="mt-4">投稿がありません</td>
       </tr>

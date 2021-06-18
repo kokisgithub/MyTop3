@@ -9,9 +9,6 @@
             <div class="col">
                 新規投稿
             </div>
-            <div class="col-auto">
-                @include('layouts.return')    
-            </div>
         </div>
     </h1>
     <form method="get" action="{{ route('create') }}" class="form-inline ml-4">

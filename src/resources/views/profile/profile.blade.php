@@ -21,10 +21,47 @@
                 @endif
                 {{ $user->name }}
             </div>
-            <div class="col-auto">
-                @include('layouts.return')    
-            </div>
         </div>
     </h6>
-
+    投稿数： {{ $count }}
+    <table class="table table-striped table-hover mt-2">
+      <tr>
+        <th scope="col">
+          タイトル
+        </th>
+        @auth
+          <th scope="col">    
+          </th>    
+          <th scope="col">
+          </th>    
+        @endauth
+      </tr>
+    @forelse ($user->posts as $post)
+      <tr>
+        <td>
+            <u><a href="{{ route('show', $post) }}" class="font-weight-bold">{{ $post->title }}</a></u>
+        </td>
+        @auth
+          @if ($post->user_id === $login_user_id)
+            <td>
+              @include('layouts.modal_delete_post')
+            </td>
+            <td>
+              <a href="{{ route('edit', $post) }}" class="btn btn-outline-success">編集</a>
+            </td>
+          @else
+            <td>
+            </td>
+            <td>
+            </td>
+          @endif
+        @endauth
+    @empty
+        <td class="mt-4">投稿がありません</td>
+      </tr>
+    @endforelse
+  </table>
+  <div class="text-center">
+    {!! $user->posts->render('vendor.pagination.paginate') !!}
+  </div>  
 @endsection
