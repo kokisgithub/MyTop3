@@ -30,12 +30,14 @@
             <u><a href="{{ route('show', $post) }}" class="font-weight-bold">{{ $post->title }}</a></u>
         </td>
         <td class="text-secondary font-weight-bold">
-          @if (!$post->user->image == null)
-            <img src="data:image/png;base64,{{ $post->user->image }}" width="50" height="50">
-          @endif
-          <p>
-            {{ optional($post->user)->name }}
-          </p>
+          <a href="{{ route('profile', $post->user_id) }}">
+            @if (!$post->user->image == null)
+              <img src="data:image/png;base64,{{ $post->user->image }}" width="50" height="50">
+            @endif
+            <p>
+              {{ optional($post->user)->name }}
+            </p>
+          </a>
         </td>
     @empty
         <td class="mt-4">投稿がありません</td>

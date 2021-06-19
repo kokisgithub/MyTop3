@@ -10,30 +10,31 @@ use App\Http\Requests\UserRequest;
 
 class UsersController extends Controller
 {
-    public function profile(Request $request){
-        $user = Auth::user();
-        $login_user_id = $user !== null ?  $user->id : null;
+    public function profile(Request $request, User $user){
+        $authUser = Auth::user();
+        $login_user_id = $authUser !== null ?  $authUser->id : null;
         $count = $user->posts->count();
         $query = Post::where('user_id', $user->id);
         $user->posts = $query->latest()->paginate(5);
         return view('profile.profile', [
             'user'              =>      $user,
+            'authUser'          =>      $authUser,
             'login_user_id'     =>      $login_user_id,
             'count'             =>      $count,
         ]);
     }
     
     public function imageIndex(){
-        $user = Auth::user();
+        $authUser = Auth::user();
         return view('profile.upload', [
-            'user'      =>      $user,
+            'authUser'      =>      $authUser,
         ]);
     }    
     
     public function upload(UserRequest $request){
-        $user = Auth::user();
-        $user->image = base64_encode(file_get_contents($request->image));
-        $user->save();
+        $authUser = Auth::user();
+        $authUser->image = base64_encode(file_get_contents($request->image));
+        $authUser->save();
         return redirect()->back();
     }
 }

@@ -12,8 +12,8 @@ class CommentsController extends Controller
 {
     public function store(CommentRequest $request, Post $post, Comment $comment) {
             $comment = new Comment(['body' => $request->body]);
-            $user = Auth::user();
-            $comment->user_id = $user->id;    
+            $authUser = Auth::user();
+            $comment->user_id = $authUser->id;    
             $post->comments()->save($comment);
             return redirect()->route('show', $post);
     }

@@ -52,12 +52,14 @@
                     {{ $comment->body }}
                 </td>
                 <td class="text-secondary font-weight-bold">
-                    @if (!$comment->user->image == null)
-                        <img src="data:image/png;base64,{{ $comment->user->image }}" width="50" height="50">
-                    @endif
-                    <p>
-                        {{ optional($comment->user)->name }}
-                    </p>
+                    <a href="{{ route('profile', $comment->user_id) }}">
+                        @if (!$comment->user->image == null)
+                            <img src="data:image/png;base64,{{ $comment->user->image }}" width="50" height="50">
+                        @endif
+                        <p>
+                            {{ optional($comment->user)->name }}
+                        </p>
+                    </a>
                 </td>
                 @auth
                     @if ($comment->user_id === $login_user_id)
