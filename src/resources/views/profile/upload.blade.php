@@ -22,13 +22,13 @@
         @enderror
     </form>
     <p><h3 class="font-weight-bold text-center my-5">
-      {{ $user->name }}
+      {{ $authUser->name }}
     </h3></p>
     <div class="row justify-content-center my-4 mx-auto">  
       <div class="col-md-4 col-sm-8">   
         @auth  
-          @if (!$user->image == null)
-            <img src="data:image/png;base64,{{ $user->image }}" class="card-img" width="20%" height="auto">
+          @if (!$authUser->image == null)
+            <img src="data:image/png;base64,{{ $authUser->image }}" class="card-img" width="20%" height="auto">
           @else
             <p class="text-center">プロフィール画像がありません</p>
           @endif

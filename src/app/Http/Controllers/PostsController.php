@@ -12,22 +12,19 @@ use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {
-    public function index(Request $request, User $user){
-        $user = Auth::user();
-        $login_user_id = $user !== null ?  $user->id : null;
-        
+    public function index(Request $request){
         $keyword = $request->input('keyword');
         $query = Post::query();
         if ($request->filled('keyword')) {
             $query->where('title', 'like', '%'. $keyword . '%');    
         }
         $posts = $query->latest()->paginate(5);
-        return view('posts.index')->with('posts', $posts)->with('keyword', $keyword)->with('login_user_id', $login_user_id);
+        return view('posts.index')->with('posts', $posts)->with('keyword', $keyword);
     }
 
     public function show(Post $post){
-        $user = Auth::user();
-        $login_user_id = $user !== null ?  $user->id : null;
+        $authUser = Auth::user();
+        $login_user_id = $authUser !== null ?  $authUser->id : null;
 
         $post->comments = Comment::where('post_id', $post->id)->orderBy('created_at', 'desc')->get();
         return view('posts.show')->with('post', $post)->with('login_user_id', $login_user_id);
@@ -40,9 +37,9 @@ class PostsController extends Controller
     }
 
     public function store(PostRequest $request){
-        $user = Auth::user();
+        $authUser = Auth::user();
         $post = new Post();
-        $post->user_id = $user->id;
+        $post->user_id = $authUser->id;
         $post->title = $request->title;
         $post->body = $request->body;
         $post->save();
@@ -54,17 +51,17 @@ class PostsController extends Controller
     }
 
     public function update(PostRequest $request, Post $post){
-        $user = Auth::user();
-        $post->user_id = $user->id;
+        $authUser = Auth::user();
+        $post->user_id = $authUser->id;
         $post->title = $request->title;
         $post->body = $request->body;
         $post->save();
-        return redirect()->route('profile', $user);
+        return redirect()->route('profile', $authUser);
     }
 
     public function destroy(Post $post){
-        $user = Auth::user();
+        $authUser = Auth::user();
         $post->delete();
-        return redirect()->route('profile', $user);
+        return redirect()->route('profile', $authUser);
     }
 }
