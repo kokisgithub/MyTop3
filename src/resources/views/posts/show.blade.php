@@ -7,10 +7,12 @@
     <h6 class="text-secondary">
         <div class="row">
             <div class="col">
-                @if (!$post->user->image == null)
-                    <img src="data:image/png;base64,{{ $post->user->image }}" width="50" height="50">
-                @endif
-                {{ $post->user->name }}
+                <a href="{{ route('profile', $post->user_id) }}">
+                    @if (!$post->user->image == null)
+                        <img src="data:image/png;base64,{{ $post->user->image }}" width="50" height="50">
+                    @endif
+                    {{ optional($post->user)->name }}
+                </a>
             </div>
         </div>
     </h6>
