@@ -43,6 +43,7 @@ services:
         target: /work/src
 
   db:
+    container_name: db
     build:
       context: .
       dockerfile: ./docker/mysql/Dockerfile
